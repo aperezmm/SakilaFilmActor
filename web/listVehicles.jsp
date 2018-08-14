@@ -18,9 +18,9 @@
         <c:forEach var="v" items="${vehicles}">
             |${v.licensePlate}| |${v.carBrand}| |${v.carModel}| |${v.price}| |<img src="${v.photo}"/>|
             |<a onclick="return confirm('Are you sure?')" href="VehicleServlet?action=delete&licensePlate=${v.licensePlate}">Delete</a>|
-            |<a onclick="return ('Edit')" href="VehicleServlet?action=edit&licensePlate=${v.licensePlate}">Edit</a>|
+            |<a onclick="return ('Edit')" href="newVehicle.jsp">Edit</a>|
             <hr/>
         </c:forEach>
-        |<a href="VehicleServlet?action=list">Find a vehicle</a>|
+        |<a href="findVehicle.jsp">Find a vehicle</a>|
     </body>
 </html>
