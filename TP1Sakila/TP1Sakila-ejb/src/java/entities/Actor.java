@@ -38,7 +38,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Actor.findByActorId", query = "SELECT a FROM Actor a WHERE a.actorId = :actorId"),
     @NamedQuery(name = "Actor.findByFirstName", query = "SELECT a FROM Actor a WHERE a.firstName = :firstName"),
     @NamedQuery(name = "Actor.findByLastName", query = "SELECT a FROM Actor a WHERE a.lastName = :lastName"),
-    @NamedQuery(name = "Actor.findByFilm", query = "SELECT a FROM Actor a WHERE a.Film = :Film"), 
     @NamedQuery(name = "Actor.findByLastUpdate", query = "SELECT a FROM Actor a WHERE a.lastUpdate = :lastUpdate")})
 public class Actor implements Serializable {
 
@@ -63,11 +62,6 @@ public class Actor implements Serializable {
     @Column(name = "last_update")
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "film")
-    private Film film;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "actor")
     private Collection<FilmActor> filmActorCollection;
 
@@ -120,15 +114,7 @@ public class Actor implements Serializable {
     @XmlTransient
     public Collection<FilmActor> getFilmActorCollection() {
         return filmActorCollection;
-    }
-    
-    public Film getFilm(){
-        return film;
-    }
-    
-    public void setFilm(Film film){
-        this.film = film;
-    }    
+    }  
 
     public void setFilmActorCollection(Collection<FilmActor> filmActorCollection) {
         this.filmActorCollection = filmActorCollection;
